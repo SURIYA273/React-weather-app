@@ -40,6 +40,7 @@ body {
     radial-gradient(circle at 88% 10%, color-mix(in srgb, var(--brand-2) 22%, transparent), transparent 36%),
     var(--bg-main);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .app-shell {
@@ -191,7 +192,7 @@ body {
   background: transparent;
   color: inherit;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 16px;
   outline: none;
 }
 
@@ -212,6 +213,8 @@ body {
   border: 1px solid var(--line);
   background: var(--surface-strong);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  max-height: 240px;
+  overflow-y: auto;
 }
 
 .suggestion-item {
@@ -383,6 +386,7 @@ body {
   gap: 0.75rem;
   overflow-x: auto;
   padding-bottom: 0.25rem;
+  scrollbar-width: thin;
 }
 
 .forecast-card {
@@ -459,28 +463,157 @@ body {
 
 @media (max-width: 680px) {
   .app-shell {
-    padding: 0.75rem;
+    padding: 0.75rem 0.65rem calc(0.8rem + env(safe-area-inset-bottom));
   }
 
   .app-header {
-    align-items: flex-start;
-    flex-direction: column;
+    padding: 0.9rem;
+    border-radius: 18px;
   }
 
   .brand-subtitle {
-    font-size: 0.82rem;
+    display: none;
   }
 
   .theme-toggle {
-    align-self: flex-end;
+    margin-left: auto;
+    padding: 0.52rem 0.8rem;
+    min-height: 40px;
+  }
+
+  .app-main {
+    margin-top: 1rem;
+  }
+
+  .app-footer {
+    margin-top: 0.2rem;
+    font-size: 0.82rem;
+  }
+
+  .home-page {
+    min-height: auto;
+  }
+
+  .hero-card {
+    border-radius: 22px;
+    padding: 1.1rem;
+  }
+
+  .hero-card h1 {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .hero-copy {
+    font-size: 0.96rem;
+    line-height: 1.45;
+  }
+
+  .search-input-box {
+    min-height: 48px;
+    padding: 0.62rem 0.78rem;
+  }
+
+  .suggestion-item {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .header-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.7rem;
   }
 
   .small-search {
     width: 100%;
+  }
+
+  .back-btn {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .main-weather-card {
+    border-radius: 22px;
+    padding: 1rem;
+    gap: 0.7rem;
+  }
+
+  .weather-info h2 {
+    line-height: 1.2;
+  }
+
+  .weather-info h1 {
+    font-size: clamp(2.2rem, 13vw, 3.1rem);
+  }
+
+  .weather-icon-large img {
+    width: clamp(105px, 34vw, 160px);
+  }
+
+  .stat {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .forecast-container {
+    border-radius: 22px;
+    padding: 1rem;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+    gap: 0.62rem;
+  }
+
+  .forecast-card {
+    min-width: 0;
+    padding: 0.72rem;
+  }
+
+  .loader,
+  .error-container,
+  .error-page {
+    margin: 1.2rem auto;
+    border-radius: 16px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-shell {
+    padding-inline: 0.5rem;
+  }
+
+  .app-header {
+    gap: 0.5rem;
+    padding: 0.72rem;
+  }
+
+  .brand-mark {
+    font-size: 1.1rem;
+  }
+
+  .theme-toggle {
+    font-size: 0.82rem;
+    padding: 0.46rem 0.68rem;
+  }
+
+  .hero-card {
+    padding: 0.95rem;
+  }
+
+  .hero-chips {
+    gap: 0.35rem;
+  }
+
+  .hero-chips span {
+    font-size: 0.75rem;
+  }
+
+  .forecast-grid {
+    grid-template-columns: 1fr;
   }
 }
